@@ -2,6 +2,7 @@
 #ifndef FBCommon_Types_h
 #define FBCommon_Types_h
 
+#include <boost/predef.h>
 #include <vector>
 #include <chrono>
 #include <boost/thread/shared_mutex.hpp>
@@ -50,5 +51,17 @@ namespace fb {
 	};
 }
 #define FBDeclarePointer(classname) class classname; typedef std::shared_ptr<classname> classname##Ptr; typedef std::weak_ptr<classname> classname##WeakPtr;
+
+#ifdef BOOST_OS_WINDOWS
+#	ifdef _WINDLL
+#		define DLL_D __declspec(dllexport)
+#	else
+#		define DLL_D __declspec(dllimport)
+#	endif //_WINDLL
+#else
+#	define DLL_D 
+#endif // BOOST_OS_WINDOWS
+
+
 
 #endif //FBCommon_Types_h
