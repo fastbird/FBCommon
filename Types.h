@@ -49,6 +49,7 @@ namespace fb {
 		Real DeltaTime;
 		TimePoint Time;
 	};
+	constexpr uint64_t InvalidIndex = (uint64_t)-1;
 }
 #define FBDeclarePointer(classname) class classname; typedef std::shared_ptr<classname> classname##Ptr; typedef std::weak_ptr<classname> classname##WeakPtr;
 
