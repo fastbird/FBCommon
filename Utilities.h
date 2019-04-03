@@ -27,6 +27,12 @@
 	bool arr##DeletedAny = arr##It != arr.end();\
 	arr.erase(arr##It, arr.end());	
 
+#define FBDeleteValuesInVectorWeak(arr, v) \
+	using FBElementType = typename std::decay<decltype(*arr.begin())>::type;\
+	auto FBdeleteFrom = std::remove_if(arr.begin(), arr.end(), [&v](const FBElementType& p){return p.lock() == v;});\
+	bool FBdeletedAny = FBdeleteFrom != arr.end();\
+	arr.erase(FBdeleteFrom, arr.end());
+
 #define FBDeleteValuesInList(arr, v) \
 	unsigned arr ## SizeBefore = arr.size(); \
 	for (auto it = arr.begin(); it != arr.end();)\
@@ -41,3 +47,8 @@
 				}\
 		}\
 	unsigned arr ## SizeAfter = arr.size();
+
+template<typename T>
+bool FBValidCString(T str) {
+	return str && str[0] != 0;
+}

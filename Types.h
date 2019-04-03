@@ -55,12 +55,12 @@ namespace fb {
 
 #ifdef BOOST_OS_WINDOWS
 #	ifdef _WINDLL
-#		define DLL_D __declspec(dllexport)
+#		define DLL_EXPORT __declspec(dllexport)
 #	else
-#		define DLL_D __declspec(dllimport)
+#		define DLL_EXPORT __declspec(dllimport)
 #	endif //_WINDLL
 #else
-#	define DLL_D 
+#	define DLL_EXPORT 
 #endif // BOOST_OS_WINDOWS
 
 
