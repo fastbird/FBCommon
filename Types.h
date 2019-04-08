@@ -63,6 +63,7 @@ namespace fb {
 #	define DLL_EXPORT 
 #endif // BOOST_OS_WINDOWS
 
+#define OVERRIDE override
 
 
 #endif //FBCommon_Types_h

@@ -48,7 +48,33 @@
 		}\
 	unsigned arr ## SizeAfter = arr.size();
 
-template<typename T>
-bool FBValidCString(T str) {
-	return str && str[0] != 0;
+#define FBSafeRelease(p) if ((p)) {(p)->Release(); (p) = nullptr;}
+
+namespace fb {
+	template <class T>
+	void ClearWithSwap(T& m)
+	{
+		T empty;
+		std::swap(m, empty);
+	}
+
+	template<typename T>
+	bool ValidCString(T str) {
+		return str && str[0] != 0;
+	}
+
+	template<class T>
+	unsigned RemoveInvalidWeakPtr(std::vector<T>& v) {
+		unsigned numDeleted = 0;
+		for (auto it = v.begin(); it != v.end(); /**/) {
+			auto data = it->lock();
+			if (!data) {
+				it = v.erase(it);
+				++numDeleted;
+				continue;
+			}
+			++it;
+		}
+		return numDeleted;
+	}
 }
