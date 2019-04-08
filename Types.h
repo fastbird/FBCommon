@@ -7,6 +7,7 @@
 #include <chrono>
 #include <boost/thread/shared_mutex.hpp>
 #include <boost/thread/lock_types.hpp>
+#include <boost/intrusive_ptr.hpp>
 #include <filesystem>
 
 namespace fb {
@@ -51,7 +52,10 @@ namespace fb {
 	};
 	constexpr uint64_t InvalidIndex = (uint64_t)-1;
 }
-#define FBDeclarePointer(classname) class classname; typedef std::shared_ptr<classname> classname##Ptr; typedef std::weak_ptr<classname> classname##WeakPtr;
+#define FBDeclarePointer(classname) class classname; typedef std::shared_ptr<classname> classname##Ptr; typedef std::weak_ptr<classname> classname##WeakPtr
+#define FBDeclareIntrusivePointer(classname) class classname; typedef boost::intrusive_ptr<classname> classname##IntPtr
+#define FBDeclareIntrusivePointer2(classname) inline void intrusive_ptr_add_ref(classname* p) { p->AddRef(); }\
+inline void intrusive_ptr_release(classname* p) { p->Release(); }
 
 #ifdef BOOST_OS_WINDOWS
 #	ifdef _WINDLL
