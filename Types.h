@@ -69,5 +69,6 @@ inline void intrusive_ptr_release(classname* p) { p->Release(); }
 
 #define OVERRIDE override
 
+#include "IInterface.h"
 
 #endif //FBCommon_Types_h
