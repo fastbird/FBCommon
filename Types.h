@@ -47,7 +47,7 @@ namespace fb {
 		Real left, top, right, bottom;
 	};
 	struct GameTime {
-		Real DeltaTime;
+		TIME_PRECISION DeltaTime;
 		TimePoint Time;
 	};
 	constexpr uint64_t InvalidIndex = (uint64_t)-1;
