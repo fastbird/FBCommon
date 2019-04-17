@@ -29,8 +29,8 @@ namespace fb
 			if (width == 0 || height == 0)
 				return;
 
-			auto currentHeight = mData.size();
-			auto currentWidth = currentHeight > 0 ? mData[0].size() : 0;
+			auto currentHeight = (int)mData.size();
+			auto currentWidth = currentHeight > 0 ? (int)mData[0].size() : 0;
 
 			int leftAdd = 0;
 			int topAdd = 0;
@@ -52,19 +52,19 @@ namespace fb
 				auto finalWidth = currentWidth + leftAdd + rightAdd;
 				auto finalHeight = currentHeight + topAdd + bottomAdd;
 				if (topAdd > 0) {
-					std::fill_n(std::front_inserter(mData), topAdd, RowType(finalWidth, (DataType*)nullptr));
+					mData.insert(mData.begin(), topAdd, RowType(finalWidth, DataType()));
 				}
 				if (bottomAdd > 0) {
-					std::fill_n(std::back_inserter(mData), topAdd, RowType(finalWidth, (DataType*)nullptr));
+					mData.insert(mData.end(), topAdd, RowType(finalWidth, DataType()));
 				}
 				if (leftAdd > 0) {
 					for (int r = topAdd; r < finalHeight - bottomAdd; ++r) {
-						std::fill_n(std::front_inserter(mData[r]), leftAdd, (DataType*)nullptr);
+						mData[r].insert(mData[r].begin(), leftAdd, DataType());
 					}
 				}
 				if (rightAdd > 0) {
 					for (int r = topAdd; r < finalHeight - bottomAdd; ++r) {
-						std::fill_n(std::back_inserter(mData[r]), rightAdd, (DataType*)nullptr);
+						mData[r].insert(mData[r].end(), rightAdd, DataType());
 					}
 				}
 			}
@@ -83,24 +83,17 @@ namespace fb
 			}
 		}
 
-		void RemoveOld()
+		void RemoveOld(std::function<bool(const DataType& data)> IsOld)
 		{
-			using namespace std::chrono;
-			using namespace std::chrono_literals;
 			if (mData.empty()) return;
-			auto now = high_resolution_clock::now();
 			// row
-			if (mNextCheckRow >= mData.size()) mNextCheckRow = mData.size() - 1;
+			if (mNextCheckRow >= (int)mData.size()) mNextCheckRow = (int)mData.size() - 1;
 			auto allEmpty = true;
 			auto& row = mData[mNextCheckRow];
 			for (auto& c : row) {
-				if (c.mData) {
-					if (now - c.mTime > 10s) {
-						c.mData = nullptr;
-					}
-					else {
-						allEmpty = false;
-					}
+				if (!IsOld(c)) {
+					allEmpty = false; 
+					break;
 				}
 			}
 			if (allEmpty) {
@@ -115,16 +108,12 @@ namespace fb
 			auto height = mData.size();
 			allEmpty = true;
 			if (mNextCheckCol >= mData[0].size())
-				mNextCheckCol = mData[0].size() - 1;
+				mNextCheckCol = (int)mData[0].size() - 1;
 			for (int r = 0; r < height; ++r) {
 				auto& c = mData[r][mNextCheckCol];
-				if (c.mData) {
-					if (now - c.mTime > 10s) {
-						c.mData = nullptr;
-					}
-					else {
-						allEmpty = false;
-					}
+				if (!IsOld(c)) {
+					allEmpty = false;
+					break;
 				}
 			}
 			if (allEmpty) {
@@ -140,8 +129,8 @@ namespace fb
 
 		int GetLeft() const { return mLeft; }
 		int GetTop() const { return mTop; }
-		int GetRight() const { return mData.empty() ? mLeft : mLeft + mData[0].size(); }
-		int GetBottom() const { return mData.empty() ? mTop : mTop + mData.size(); }
+		int GetRight() const { return mData.empty() ? mLeft : mLeft + (int)mData[0].size(); }
+		int GetBottom() const { return mData.empty() ? mTop : mTop + (int)mData.size(); }
 		void ShiftIndex(int shiftX, int shiftY) { mLeft += shiftX; mTop += shiftY; }
 	};
 }
