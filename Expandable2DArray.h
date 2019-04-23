@@ -41,6 +41,7 @@ namespace fb
 				mTop = top;
 				rightAdd = width;
 				bottomAdd = height;
+				mData.insert(mData.begin(), height, RowType(width, DataType()));
 			}
 			else {				
 				auto leftAdd = std::max(0, mLeft - left);
@@ -73,10 +74,10 @@ namespace fb
 			for (int r = 0; r < height; ++r) {
 				auto sourceIndexR = r * width;
 				auto destR = (top + r) - mTop;
-				assert(destR > 0);
+				assert(destR >= 0);
 				for (int c = 0; c < width; ++c) {
 					auto destC = (left + c) - mLeft;
-					assert(destC > 0);
+					assert(destC >= 0);
 					auto sourceIndex = sourceIndexR + c;
 					mData[destR][destC] = data[sourceIndex];
 				}
