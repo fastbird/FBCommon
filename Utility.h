@@ -27,6 +27,10 @@
 	bool arr##DeletedAny = arr##It != arr.end();\
 	arr.erase(arr##It, arr.end());	
 
+#define FBDeleteOneValueInVector(arr, v)\
+	auto it = std::find(arr.begin(), arr.end(), v);\
+	arr.erase(it);
+
 #define FBDeleteValuesInVectorWeak(arr, v) \
 	using FBElementType = typename std::decay<decltype(*arr.begin())>::type;\
 	auto FBdeleteFrom = std::remove_if(arr.begin(), arr.end(), [&v](const FBElementType& p){return p.lock() == v;});\

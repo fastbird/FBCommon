@@ -2,7 +2,7 @@
 
 // Fastbird Engine
 // Written by Jungwan Byun
-// http://www.jungwan.net
+// https://fastbirddev.blogspot.com
 
 #include <map>
 #include <vector>
