@@ -167,8 +167,10 @@
     <ClInclude Include="Flags.h" />
     <ClInclude Include="IInterface.h" />
     <ClInclude Include="Observable.h" />
+    <ClInclude Include="SortedVector.h" />
     <ClInclude Include="Types.h" />
     <ClInclude Include="Utility.h" />
+    <ClInclude Include="VectorMap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -56,16 +56,6 @@ namespace fb
 
 
 		//--------------------------------------------------------------------
-		VectorMap()
-		{
-
-		}
-
-		virtual ~VectorMap() {
-
-		}
-
-		//--------------------------------------------------------------------
 		iterator insert(const _Val_type& data)
 		{
 			iterator i = std::lower_bound(

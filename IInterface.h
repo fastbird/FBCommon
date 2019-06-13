@@ -1,4 +1,8 @@
 #pragma once
+// Fastbird Engine
+// Written by Jungwan Byun
+// https://fastbirddev.blogspot.com
+
 #include "Types.h"
 namespace fb
 {

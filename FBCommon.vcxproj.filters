@@ -33,5 +33,11 @@
     <ClInclude Include="Expandable2DArray.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="VectorMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SortedVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

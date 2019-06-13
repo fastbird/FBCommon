@@ -1,6 +1,9 @@
 #pragma once
 #ifndef FBCommon_Types_h
 #define FBCommon_Types_h
+// Fastbird Engine
+// Written by Jungwan Byun
+// https://fastbirddev.blogspot.com
 
 #include <boost/predef.h>
 #include <vector>
@@ -14,7 +17,8 @@ namespace fb {
 	using byte = unsigned char;
 	using uint8 = unsigned char;
 	using ushort = unsigned short;
-	using uint32 = unsigned int;
+	using uint16 = unsigned short; |
+	using uint32 = unsigned int;	
 	using DWORD = unsigned long;
 	using uint64 = unsigned __int64;
 	using int64 = __int64;

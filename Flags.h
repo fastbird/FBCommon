@@ -1,6 +1,10 @@
 #pragma once
 #ifndef FBCommon_Flags_h
 #define FBCommon_Flags_h
+// Fastbird Engine
+// Written by Jungwan Byun
+// https://fastbirddev.blogspot.com
+
 #include <inttypes.h>
 namespace fb
 {

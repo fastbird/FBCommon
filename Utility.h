@@ -1,4 +1,7 @@
 #pragma once
+// Fastbird Engine
+// Written by Jungwan Byun
+// https://fastbirddev.blogspot.com
 
 #define FBIteratingWeakContainer(container, it, var)\
 	auto (var) = (it)->lock();\
