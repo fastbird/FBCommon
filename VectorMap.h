@@ -6,11 +6,6 @@
 #include <vector>
 #include <algorithm>
 
-namespace boost {
-	namespace serialization {
-
-	}
-}
 namespace fb
 {
 	template<class _Kty, class _Ty>
