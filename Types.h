@@ -17,7 +17,7 @@ namespace fb {
 	using byte = unsigned char;
 	using uint8 = unsigned char;
 	using ushort = unsigned short;
-	using uint16 = unsigned short; |
+	using uint16 = unsigned short;
 	using uint32 = unsigned int;	
 	using DWORD = unsigned long;
 	using uint64 = unsigned __int64;
