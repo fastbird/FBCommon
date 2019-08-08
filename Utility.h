@@ -84,4 +84,16 @@ namespace fb {
 		}
 		return numDeleted;
 	}
+
+	inline unsigned int CalcAligned(unsigned int value, unsigned int alignment)
+	{
+		// Example: Suppose value = 300, alignment = 256.
+		// (300 + 255) & ~255
+		// 555 & ~255
+		// 0x022B & ~0x00ff
+		// 0x022B & 0xff00
+		// 0x0200
+		// aligned value = 512
+		return (value + (alignment-1)) & ~(alignment-1);
+	}
 }

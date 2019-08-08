@@ -165,7 +165,9 @@
   <ItemGroup>
     <ClInclude Include="Expandable2DArray.h" />
     <ClInclude Include="Flags.h" />
-    <ClInclude Include="IInterface.h" />
+    <ClInclude Include="glm.h" />
+    <ClInclude Include="IRefCounted.h" />
+    <ClInclude Include="IntrusivePtr.h" />
     <ClInclude Include="Observable.h" />
     <ClInclude Include="SortedVector.h" />
     <ClInclude Include="Types.h" />

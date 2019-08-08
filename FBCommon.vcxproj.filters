@@ -21,9 +21,6 @@
     <ClInclude Include="Flags.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IInterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Observable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -37,6 +34,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SortedVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IntrusivePtr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IRefCounted.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="glm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

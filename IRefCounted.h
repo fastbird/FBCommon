@@ -8,7 +8,7 @@ namespace fb
 {
 
 // Not thread safe
-class DLL_EXPORT IInterface {
+class DLL_EXPORT IRefCounted {
 	uint32_t FBReferenceCount = 1;
 
 public: // functions
@@ -23,7 +23,7 @@ public: // functions
 	}
 
 protected: // functions
-	virtual ~IInterface(){}
+	virtual ~IRefCounted(){}
 };
 
 }
