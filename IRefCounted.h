@@ -26,4 +26,6 @@ protected: // functions
 	virtual ~IRefCounted(){}
 };
 
+inline void intrusive_ptr_add_ref(IRefCounted* p) { p->AddRef(); }
+inline void intrusive_ptr_release(IRefCounted* p) { p->Release(); }
 }

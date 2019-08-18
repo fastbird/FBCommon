@@ -5,7 +5,10 @@
 // Written by Jungwan Byun
 // https://fastbirddev.blogspot.com
 
-#if USE_BOOST
+// Configuretions
+// FB_USE_BOOST, FB_USE_FILESYSTEM
+
+#if FB_USE_BOOST
 #include <boost/predef.h>
 #include <boost/thread/shared_mutex.hpp>
 #include <boost/thread/lock_types.hpp>
@@ -36,14 +39,14 @@ namespace fb {
 	using StringArray = std::vector<std::string>;
 	using ClockType = std::chrono::high_resolution_clock;
 	using TimePoint = std::chrono::time_point<ClockType>;
-#if USE_BOOST
+#if FB_USE_BOOST
 	using SharedMutex = boost::shared_mutex;
 	using SharedLock = boost::shared_lock<SharedMutex>;
 	using UniqueLock = boost::unique_lock<SharedMutex>;
 	using UpgradableLock = boost::upgrade_lock<SharedMutex>;
 	using UpgradeToUniqueLock = boost::upgrade_to_unique_lock<SharedMutex>;
 #endif
-#if USE_FILESYSTEM
+#if FB_USE_FILESYSTEM
 	namespace FileSystem = std::filesystem;
 	using Path = FileSystem::path;
 	using Paths = std::vector<Path>;
@@ -63,9 +66,7 @@ namespace fb {
 	constexpr uint64_t InvalidIndex = (uint64_t)-1;
 }
 #define FBDeclarePointer(classname) class classname; typedef std::shared_ptr<classname> classname##Ptr; typedef std::weak_ptr<classname> classname##WeakPtr
-#define FBDeclareIntrusivePointer(classname) class classname; typedef fb::intrusive_ptr<classname> classname##IntPtr
-#define FBDeclareIntrusivePointer2(classname) inline void intrusive_ptr_add_ref(classname* p) { p->AddRef(); }\
-inline void intrusive_ptr_release(classname* p) { p->Release(); }
+#define FBDeclareIntrusivePointer(classname) class classname; typedef fb::intrusive_ptr<classname> classname##IPtr
 
 #ifdef BOOST_OS_WINDOWS
 #	ifdef _WINDLL
