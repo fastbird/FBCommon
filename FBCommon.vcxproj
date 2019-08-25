@@ -163,6 +163,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AABB.h" />
     <ClInclude Include="Expandable2DArray.h" />
     <ClInclude Include="Flags.h" />
     <ClInclude Include="glm.h" />
@@ -170,6 +171,7 @@
     <ClInclude Include="IntrusivePtr.h" />
     <ClInclude Include="Observable.h" />
     <ClInclude Include="SortedVector.h" />
+    <ClInclude Include="StringHeader.h" />
     <ClInclude Include="Types.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="VectorMap.h" />
