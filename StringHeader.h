@@ -14,7 +14,7 @@ namespace fb
 		return ret;
 	}
 #else
-	std::vector<std::string_view> Split(std::string_view str, std::string_view delim)
+	inline std::vector<std::string_view> Split(std::string_view str, std::string_view delim)
 	{
 		std::vector<std::string_view> ret;
 		size_t startPos = 0;
@@ -31,4 +31,13 @@ namespace fb
 		return ret;
 	}
 #endif
+
+	inline std::wstring AnsiToWString(const char* str)
+	{
+		WCHAR buffer[1024];
+
+		// window only
+		MultiByteToWideChar(CP_ACP, 0, str, -1, buffer, 512);
+		return std::wstring(buffer);
+	}
 }
