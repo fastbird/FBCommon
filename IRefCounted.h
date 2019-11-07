@@ -9,7 +9,7 @@ namespace fb
 
 // Not thread safe
 class DLL_EXPORT IRefCounted {
-	uint32_t FBReferenceCount = 1;
+	uint32_t FBReferenceCount = 0;
 
 public: // functions
 	void AddRef() {
